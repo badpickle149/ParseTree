@@ -27,14 +27,11 @@ public class ParseTree {
       overallRoot = this.buildTree(overallRoot);
       addExpressions(overallRoot);
       boolean wellFormed = true;
-      boolean isTrue = false;
-      while(!this.wellFormed.isEmpty()) {
-         isTrue = this.wellFormed.pop();
-         if (!isTrue) {
-            wellFormed = false;
-         }
+      if (this.wellFormed.contains(false)) {
+         wellFormed = false;
       }
       overallRoot = this.buildTree(overallRoot);
+      
       if (!this.checkBrackets(overallRoot.phrase)) {
          System.out.println("The formula is not well formed. Brackets are not correctly formed.");
       } else {
